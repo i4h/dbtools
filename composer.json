@@ -3,4 +3,13 @@
     "description": "Shell scripts to manage test fixtures in web projects",
     "require": {
     }
+    "keywords": ["mysql","testing","fixture"],
+    "homepage": "https://github.com/i4h/dbtools",
+    "authors": [
+        {
+            "name": "Ingmar Vierhaus",
+            "email": "mail@ingmar-vierhaus.de",
+            "role": "Developer"
+        }
+    ],
 }
