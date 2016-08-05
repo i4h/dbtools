@@ -1,0 +1,6 @@
+{
+    "name": "i4h/dbtools",
+    "description": "Shell scripts to manage test fixtures in web projects",
+    "require": {
+    }
+}
