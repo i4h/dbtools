@@ -41,11 +41,11 @@ if [ "$USER" == "" ] || [ "$PASSWORD" == "" ] || [ "$HOST" == "" ] || [ "$DB" ==
     echo "For this to work, all parameters for source databse testing need to be defined in  params_local"
     exit
 fi;
-exit;
 
 
 
 
-mysql -u $TESTING_USER -h $HOST -p$TESTING_PW $TESTING_DB -Bse "drop database $TESTING_DB; create database $TESTING_DB"
+
+mysql -u $USER -h $HOST -p$PASSWORD $DB -Bse "drop database $DB; create database $DB"
 
 
