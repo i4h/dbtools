@@ -165,10 +165,23 @@ if [ "$TABLES" != "all" ] ; then
 fi
 
 # Make command
+
 flags="-u "$USER
 if [ "$PASSWORD" != "" ]; then
     flags=$flags" -p"$PASSWORD
 fi
+
+if [ "$WHAT" = "data" ] ; then
+    flags=$flags" --no-create-info"
+fi
+if [ "$WHAT" = "structure" ] ; then
+    flags=$flags" --no-data"
+fi
+if [ "$PRETTY" = "pretty" ] ; then
+    flags=$flags" --extended-insert=FALSE --complete-insert"
+fi
+
+
 cmd="/usr/bin/mysqldump -h $HOST  $flags $DB $tbls"
 
 if [[ $VERBOSE = y ]] ; then
