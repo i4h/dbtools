@@ -2,7 +2,6 @@
 
 # Loads the given dump into the testing database
 
-
 set -o nounset
 set -o errexit
 
@@ -26,6 +25,8 @@ USER=""
 PASSWORD=""
 SOURCE="testing"
 
+
+
 if exists $SOURCE in  PASSWORDS  ; then
     PASSWORD=${PASSWORDS[$SOURCE]}
 fi
@@ -43,7 +44,7 @@ if [ "$USER" == "" ] || [ "$PASSWORD" == "" ] || [ "$HOST" == "" ] || [ "$DB" ==
     echo "For this to work, all parameters for source databse testing need to be defined in  params_local"
     exit
 fi;
-exit;
+
 
 echo "Running mysql -h $HOST -u $USER -p$PASSWORD $DB "< "$1"
 mysql -h $HOST -u $USER -p$PASSWORD $DB < $1
