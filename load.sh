@@ -46,7 +46,7 @@ if [ "$USER" == "" ] || [ "$PASSWORD" == "" ] || [ "$HOST" == "" ] || [ "$DB" ==
 fi;
 
 
-echo "Running mysql -h $HOST -u $USER -p$PASSWORD $DB "< "$1"
+echo "Running mysql -h $HOST -u $USER -p$PASSWORD $DB < $1"
 mysql -h $HOST -u $USER -p$PASSWORD $DB < $1
 
 

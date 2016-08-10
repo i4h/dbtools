@@ -181,6 +181,15 @@ if [ "$PRETTY" = "pretty" ] ; then
     flags=$flags" --extended-insert=FALSE --complete-insert"
 fi
 
+if exists $SOURCE in IGNOREDTABLES  ; then
+    for table in ${IGNOREDTABLES[$SOURCE]}; do
+	flags=$flags" --ignore-table "$DB"."$table
+    done
+fi
+
+
+
+
 
 cmd="/usr/bin/mysqldump -h $HOST  $flags $DB $tbls"
 
@@ -202,3 +211,4 @@ if [[ $KEEP_AUTO_INCREMENT = "n" ]] ; then
 fi
 
 exit $EXIT_SUCCESS
+

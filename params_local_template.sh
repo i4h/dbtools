@@ -5,6 +5,8 @@ declare -A HOSTS
 declare -A DBS
 declare -A USERNAMES
 declare -A PASSWORDS
+declare -A IGNOREDTABLES
+
 
 # Connection parameters for source databases
 
@@ -13,12 +15,16 @@ HOSTS["dev"]="localhost"
 DBS["dev"]="myproject"
 USERNAMES["dev"]="root"
 PASSWORDS["dev"]=""
+IGNOREDTABLES["dev"]="log visitors"
+
 
 ## Source database testing
 HOSTS["testing"]="localhost"
 DBS["testing"]="myproject_testing"
 USERNAMES["testing"]="root"
 PASSWORDS["testing"]=""
+IGNOREDTABLES["dev"]="log visitors"
+
 
 ## Source database production
 HOSTS["production"]="localhost"
