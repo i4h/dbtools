@@ -177,8 +177,13 @@ fi
 if [ "$WHAT" = "structure" ] ; then
     flags=$flags" --no-data"
 fi
+
+# Always write column names in dumps
+flags=$flags" --complete-insert"
+
+# One line per insert to allow diffs
 if [ "$PRETTY" = "pretty" ] ; then
-    flags=$flags" --extended-insert=FALSE --complete-insert"
+    flags=$flags" --extended-insert=FALSE"
 fi
 
 if exists $SOURCE in IGNOREDTABLES  ; then
