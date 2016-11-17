@@ -18,6 +18,8 @@ DB="none"
 WHAT="data and structure"
 PRETTY=""
 KEEP_AUTO_INCREMENT="n"
+IGNORE_TABLE=""
+
 # function definitions 
 function usage {
  echo "Usage: $SCRIPTNAME [options] sourcedb base|basedata|data|all [target.sql]" >&2
@@ -33,7 +35,7 @@ function usage {
  echo " -p        make pretty data dumps "
  echo " -a        keep auto increment "
  echo " -w pw     use pw as password for mysql connection"
-
+ echo " -i table  table to be ignored"
 
 
  [[ $# -eq 1 ]] && exit $1 || exit $EXIT_FAILURE
@@ -50,7 +52,7 @@ function exists(){
 }
 
 # List of Arguments. Option flags followed by a ":" require an option, flags not followed by an ":" are optionless
-while getopts ':w:vhsdp' OPTION ; do
+while getopts ':w:i:vhsdp' OPTION ; do
  case $OPTION in
  s) WHAT="structure"
  ;;
@@ -65,6 +67,8 @@ while getopts ':w:vhsdp' OPTION ; do
  o) OPTFILE="$OPTARG"
  ;;
  w) PW="$OPTARG"
+ ;;
+ i) IGNORE_TABLES="$OPTARG"
  ;;
  h) usage $EXIT_SUCCESS
  ;;
@@ -190,6 +194,10 @@ if exists $SOURCE in IGNOREDTABLES  ; then
     for table in ${IGNOREDTABLES[$SOURCE]}; do
 	flags=$flags" --ignore-table "$DB"."$table
     done
+fi
+
+if [ "$IGNORE_TABLE" != "" ] ; then
+    flags=$flags" --ignore-table="$DB"."$IGNORE_TABLE
 fi
 
 
